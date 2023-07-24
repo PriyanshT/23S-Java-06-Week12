@@ -40,4 +40,12 @@ public class TwoNumber {
     public int sum(){
         return number1 + number2;
     }
+
+    @Override
+    public String toString() {
+        return "TwoNumber{" +
+                "number1=" + number1 +
+                ", number2=" + number2 +
+                '}';
+    }
 }

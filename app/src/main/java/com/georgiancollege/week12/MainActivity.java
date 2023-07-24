@@ -29,17 +29,29 @@ public class MainActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.button);
         finalLabel = findViewById(R.id.textView2);
 
+        // hide the label
+        finalLabel.setVisibility(View.INVISIBLE);
+
         // submit button click listener
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Listener", "Submit Button is clicked!");
+                finalLabel.setVisibility(View.VISIBLE);
 
                 try {
                     int num1 = Integer.parseInt(number1TextField.getText().toString());
                     int num2 = Integer.parseInt(number2TextField.getText().toString());
                     Log.d("NumberValues", "Number 1: " + num1);
                     Log.d("NumberValues", "Number 2: " + num2);
+
+                    // create an object
+                    TwoNumber twoNumber = new TwoNumber(num1, num2);
+                    Log.d("ModelValue", twoNumber.toString());
+
+                    // get sum value and display it
+                    finalLabel.setText(String.format("%d + %d = %d", num1, num2, twoNumber.sum()));
+
                 } catch (Exception e) {
                     finalLabel.setText("Please enter both the numbers!");
                 }
